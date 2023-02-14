@@ -1,0 +1,30 @@
+body {
+  background-image: linear-gradient(to bottom right, lightblue, plum);
+  background-repeat: none;
+  height: 100vh;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.selection {
+  padding: 10px 5px;
+}
+
+.selection:hover, .input:hover{
+  cursor: pointer;
+}
+
+.vertical-padding {
+  padding: 20px 5px;
+}
+
+.submit {
+  padding: 2px 5px;
+  background-color: #B594B6;
+  border: 1px solid black;
+  border-radius: 1px;
+}
+
+button:hover {
+  background-color: rgba(181,148,182, 0.8);
+}
