@@ -16,6 +16,8 @@ secondChoiceEl.innerText = 'This is the second choice';
 thirdChoiceEl.innerText = 'This is the third choice';
 fourthChoiceEl.innerText = 'This is the fourth choice';
 
+
+
 generateQuestion();
 function generateQuestion() {
   let wordIndex = vocabIndex();
@@ -30,6 +32,7 @@ function generateQuestion() {
   let correctDefIndex = choiceIndex();
   choiceEls[correctDefIndex].innerText = correctDef;
   choiceIndexList.push(correctDefIndex);
+  
 
   /**for (let i = 0; i < 4; i++) {
     let j = choiceIndex(); 
@@ -46,11 +49,12 @@ function generateQuestion() {
       console.log('their positions will be: ', choiceIndexList);
     }*/
   }
-
-  assignFillerIndices();
-  assignFillerIndices();
-  assignFillerIndices();
-  assignFillerIndices();
+fillBlanks();
+fillBlanks();
+fillBlanks();
+fillDefs();
+fillDefs();
+fillDefs();
   console.log('these are the definitions: ', defIndexList);
   console.log('and these are their positions: ', choiceIndexList);
 
@@ -65,23 +69,6 @@ function choiceIndex() {
 //TODO: separate into two functions
 //both with while loops one to fill each array
 //then both functions up top
-function assignFillerIndices() {
-  let j = choiceIndex();
-  let k = vocabIndex();
-
-  if (choiceIndexList.includes(j)) {
-    j = choiceIndex();
-  } else {
-    choiceIndexList.push(j);
-  }
-
-  if (defIndexList.includes(k)) {
-    k = vocabIndex();
-  } else {
-    defIndexList.push(k);
-  }
-}
-
 
 /** 
  * 1. Pick a random definition from the list
@@ -91,3 +78,21 @@ function assignFillerIndices() {
  * 3. Assign definition to slot
  * 4. Repeat 1-3
  */
+
+function fillBlanks() {
+  let filler = choiceIndex();
+  if (!choiceIndexList.includes(filler)) {
+    choiceIndexList.push(filler);
+  } else {
+    fillBlanks()
+  }
+}
+
+function fillDefs() {
+  let filler = vocabIndex();
+  if (!defIndexList.includes(filler)) {
+    defIndexList.push(filler);
+  } else {
+    fillDefs()
+  }
+}
