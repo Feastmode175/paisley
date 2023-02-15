@@ -88,3 +88,18 @@ function mapAnswers() {
     choiceEls[i].innerText = DEFINITIONS[defIndexList[i]];
   }
 }
+
+const inputs = document.querySelectorAll('.selections')
+
+inputs.forEach (input => {
+  input.addEventListener('click',()=> {
+    removeActiveClasses();
+    input.classList.add('active');
+  })
+})
+
+function removeActiveClasses () {
+  inputs.forEach(input => {
+    input.classList.remove('active')
+  })
+}
