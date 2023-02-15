@@ -11,52 +11,38 @@ const choiceEls = [firstChoiceEl, secondChoiceEl, thirdChoiceEl, fourthChoiceEl]
 let choiceIndexList = [];
 let defIndexList = [];
 
-firstChoiceEl.innerText = 'This is the first choice';
-secondChoiceEl.innerText = 'This is the second choice';
-thirdChoiceEl.innerText = 'This is the third choice';
-fourthChoiceEl.innerText = 'This is the fourth choice';
-
-
 
 generateQuestion();
+fillBlanks();
+fillBlanks();
+fillBlanks();
+fillDefs();
+fillDefs();
+fillDefs();
+mapAnswers();
+  console.log('these are the definitions: ', defIndexList);
+  console.log('and these are their positions: ', choiceIndexList);
+
+
+
+
+
+
 function generateQuestion() {
   let wordIndex = vocabIndex();
     
   let chosenWord = VOCAB_WORDS[wordIndex];
   let correctDef = DEFINITIONS[wordIndex];
   defIndexList.push(wordIndex)
+
+  chosenWordEl.innerText = chosenWord;
   console.log(chosenWord);
   console.log(correctDef);
-  chosenWordEl.innerText = chosenWord;
 
   let correctDefIndex = choiceIndex();
-  choiceEls[correctDefIndex].innerText = correctDef;
   choiceIndexList.push(correctDefIndex);
-  
+}
 
-  /**for (let i = 0; i < 4; i++) {
-    let j = choiceIndex(); 
-    let k = vocabIndex();
-
-    while (choiceIndexList.includes(j) || defIndexList.includes(k)) {
-      j = choiceIndex();
-      k = vocabIndex();
-    } 
-      choiceIndexList.push(j);
-      defIndexList.push(k);
-      console.log('option: ', j, 'def: ', k);
-      console.log('the selected definitions are: ', defIndexList);
-      console.log('their positions will be: ', choiceIndexList);
-    }*/
-  }
-fillBlanks();
-fillBlanks();
-fillBlanks();
-fillDefs();
-fillDefs();
-fillDefs();
-  console.log('these are the definitions: ', defIndexList);
-  console.log('and these are their positions: ', choiceIndexList);
 
 
 function vocabIndex() {
@@ -94,5 +80,11 @@ function fillDefs() {
     defIndexList.push(filler);
   } else {
     fillDefs()
+  }
+}
+
+function mapAnswers() {
+  for (let i = 0; i < 4; i++) {
+    choiceEls[i].innerText = DEFINITIONS[defIndexList[i]];
   }
 }
